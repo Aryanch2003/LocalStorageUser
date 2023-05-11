@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h1 {
+            color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        label {
+            font-size: 20px;
+            margin-right: 350px;
+            margin-bottom: 5px;
+
+        }
+
+        input {
+            font-size: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Authentication with LocalStorage</h1>
+
+    <h2>Login</h2>
+    <form>
+        <label>UserName:</label>
+    </form>
+
+    <form>
+        <input size="50" type="text" id="username" placeholder="Enter Username">
+    </form>
+
+    <form>
+        <label>Password:</label>
+
+    </form>
+
+    <form>
+        <input size="50" type="password" placeholder="Password" id="pass">
+    </form>
+    <div class="container text-center">
+        <button type="button" class="btn btn-success">Login</button>
+        <a class="btn btn-primary" href="./1-Register.html">Register</a>
+    </div>
+
+<script>
+    let btn = document.querySelector('button')
+    btn.onclick=()=>{
+        let uname = document.getElementById('username').value;
+        let pass = document.getElementById('pass').value;
+
+        if(uname === ""&& pass ===""){
+            alert("Enter Credentials")
+            return
+        }
+        let data = JSON.parse(window.localStorage.getItem('user'));
+        if(data==null){
+            alert("Plz register to get access");
+        }
+        else{
+            if(uname === data.uname && pass === data.pass){
+                window.location.href = "1-Home.html";
+            }
+            else{
+                alert("Invalid details")
+                return
+            }
+        }
+
+    }
+</script>
+
+
+</body>
+
+
+</html>
